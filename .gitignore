@@ -103,15 +103,28 @@ jspm_packages/
 ## Yarn Integrity file
 .yarn-integrity
 
+
+## coverage
+coverage
+
 ## dotenv environment variables file
 .env
+.env.development.local
+.env.local
+.env.production.local
 .env.test
+.env.test.local
+
+## expo
+.expo/*
+.webpack/*
 
 ## yarn v2
+.pnp.*
+.pnp/
+.yarn/build-state.yml
 .yarn/cache
 .yarn/unplugged
-.yarn/build-state.yml
-.pnp.*
 
 # Python
 
@@ -141,6 +154,7 @@ parts/
 sdist/
 share/python-wheels/
 var/
+web-build/
 wheels/
 
 ## PyInstaller
