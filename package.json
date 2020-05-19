@@ -27,19 +27,64 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/runtime": "^7.5.0",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-angular": "^8.3.4",
+    "@react-native-community/eslint-config": "^0.0.3",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.1.0",
     "babel-preset-expo": "~8.1.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^3.6.0",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.2",
+    "flow-bin": "^0.105.0",
     "husky": "^4.2.3",
-    "jest-expo": "~37.0.0"
+    "jest": "^24.1.0",
+    "jest-expo": "~37.0.0",
+    "prettier": "^1.16.1",
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^16.13.1",
+    "react-test-renderer": "16.8.1",
+    "typescript": "^3.9.2"
   },
   "husky": {
     "hooks": {
-      "commit-msg": "node_modules/@commitlint/cli/lib/cli.js -E HUSKY_GIT_PARAMS"
+      "commit-msg": "node_modules/@commitlint/cli/lib/cli.js -E HUSKY_GIT_PARAMS",
+      "pre-commit": "npm run lint:fix"
     }
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
+      "^.+\\.jsx$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    },
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!android/**",
+      "!ios/**",
+      "!assets/**"
+    ],
+    "coverageDirectory": "jest_coverage",
+    "setupFiles": [
+      "./jest-setup.js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/e2e/"
+    ]
   },
   "keywords": [
     "changelog",
@@ -52,6 +97,7 @@
   "scripts": {
     "android": "expo start --android",
     "eject": "expo eject",
+    "flow": "./node_modules/flow-bin/cli.js",
     "ios": "expo start --ios",
     "lint": "./node_modules/.bin/eslint ./**/*.{js,jsx,ts,tsx}",
     "lint:fix": "./node_modules/.bin/eslint --fix ./**/*.{js,jsx,ts,tsx}",
