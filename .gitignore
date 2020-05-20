@@ -106,6 +106,7 @@ jspm_packages/
 
 ## coverage
 coverage
+jest_coverage
 
 ## dotenv environment variables file
 .env
